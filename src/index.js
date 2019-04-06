@@ -1,5 +1,5 @@
-// import * as PIXI from './vendor/pixi.min.js';
 import * as PIXI from 'pixi.js';
+import * as Sound from 'pixi-sound';
 
 //Create a Pixi Application
 let app = new PIXI.Application({
@@ -10,13 +10,24 @@ let app = new PIXI.Application({
   resolution: 1 // default:  1
 });
 
-PIXI.loader.add('images/polar_bear.png').load(setup);
+// AUTO PLAY CODE HERE
+// PIXI.sound.Sound.from({
+//   url: './assets/sound/sample.ogg',
+//   autoPlay: true,
+//   complete: function() {
+//     console.log('Sound finished');
+//   }
+// });
+
+const sound = PIXI.sound.Sound.from('./assets/sound/sample.ogg');
+
+PIXI.loader.add('./assets/images/polar_bear.png').load(setup);
 
 let bear;
 
 function setup() {
   bear = new PIXI.Sprite(
-    PIXI.loader.resources['images/polar_bear.png'].texture
+    PIXI.loader.resources['./assets/images/polar_bear.png'].texture
   );
   app.stage.addChild(bear);
   app.ticker.add(delta => gameLoop(delta));
@@ -26,5 +37,11 @@ function gameLoop(delta) {
   bear.x += 1;
 }
 
-//Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view);
+document.querySelector('#stopButton').addEventListener('click', function() {
+  sound.stop();
+});
+
+document.querySelector('#playButton').addEventListener('click', function() {
+  sound.play();
+});

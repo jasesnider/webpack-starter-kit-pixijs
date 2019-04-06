@@ -9,6 +9,7 @@
   "author": "Polarami",
   "license": "MIT",
   "dependencies": {
+    "pixi-sound": "^2.1.0",
     "pixi.js": "^4.8.7"
   },
   "devDependencies": {

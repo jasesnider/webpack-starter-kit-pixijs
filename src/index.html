@@ -5,10 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Webpack Starter Kit</title>
+    <style>
+      #playButton,
+      #stopButton {
+        border-radius: 4px;
+        width: 200px;
+        height: 40px;
+        color: white;
+        line-height: 40px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      #playButton {
+        background-color: navy;
+      }
+      #stopButton {
+        background-color: red;
+      }
+    </style>
   </head>
   <body>
+    <button id="playButton">Play</button>
+    <button id="stopButton">Stop</button>
     <div id="WelcomeMessage"></div>
-
     <script src="./bundle.js"></script>
   </body>
 </html>
